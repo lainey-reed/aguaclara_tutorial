@@ -135,7 +135,7 @@ from aide_design.play import*
 def reynoldsNumber(v,r,nu):
   return (2*v*r / nu)
 
-temp_array=np.arange(201)
+temp_array=np.arange(201) # in celcius
 pipeRadius=.2*u.m
 flowRate=4*u.m ** 2 /u.s
 viscosity_k_array = np.array([])
