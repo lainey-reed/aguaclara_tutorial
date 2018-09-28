@@ -129,8 +129,33 @@ print (ratio)
 
 <!--- Fill you answer here. --->
 ```python
+from aide_design.play import*
+#import physchem as ps
+
+def reynoldsNumber(v,r,nu):
+  return (2*v*r / nu)
+  
+temp_array=np.arange(273,473)
 pipeRadius=.2*u.m
-flowRate=4*u.m^3 /u.s
+flowRate=4*u.m ** 2 /u.s
+viscosity_k_array = np.array([])
+for n in temp_array:
+  viscosity_k=pc.viscosity_kinematic(n*u.kelvin)
+  viscosity_k_array = np.append(viscosity_k_array, viscosity_k)
+
+plt.plot(temp_array,reynoldsNumber(flowRate,pipeRadius,viscosity_k_array),'-',label = "Reynolds Number")
+plt.xlabel('Temperature (Kelvin)')
+plt.ylabel('Reynolds Number')
+plt.title('Temperature vs. Reynolds Number')
+
+plt.minorticks_on()
+plt.grid(which = 'major')
+plt.grid(which = 'minor')
+plt.legend(loc = 'lower right', ncol = 1)
+plt.tight_layout()
+plt.savefig('./Images/Reynolds_Plot.png')
+plt.show()
+
 
 
 ```
