@@ -33,42 +33,54 @@ These questions are meant to test what you've learned from the Python Basics tut
 
 <!--- Fill you answer here. --->
 
-
+x=int(input("Enter a number: "))
+if (x==1):
+    print ("Your number is ", x)
+elif(x==10):
+    print ("Your number is ", x)
+else:
+    print("Your number is neither 1 nor 10! It's ", x)
 
 
 2. Write a `for` loop that takes a variable with an initial value of 0, and adds the current index to the previous value of that variable (i.e. you variable should grow in size every iteration). Perform the iteration 20 times, and have the final value be printed at the end.
 
 <!--- Fill you answer here. --->
 
-```python
 i=0
 for i in range(20):
     print (i)
 print ("Final number is ", i)
-```
-
-
-
-
 
 
 3. Using the NumPy package and `unit_registry`, calculate the value of sin(4) meters, and use the sigfig function from the unit unit_registry module in aide_design to get your answer to 2 sig-figs. *(Hint: You will need to import these packages. Remember how to do that?)*
 
 <!--- Fill you answer here. --->
 
+from aide_design.play import*
 
+u.default_format = '.2f' # the page with list of functions of aide_design gives 404 error
+y=math.sin(4) * u.m
+print (y)
 
 4. Create a `list` of length 5, and verify the length of your list. Once you've done that, turn your `list` into an `array` and apply units of meters to it. After that, create a 5x5 `array`, extract the middle row and middle column. Verify the size of your 2D `array` and apply units of liters to it.
 
 <!--- Fill you answer here. --->
 
-
-
-
-
-
-
-
+from aide_design.play import*
+list1=[0]*5
+print(list)
+array1 = np.array(list1)
+array1Units = array1 * u.m
+print (array1)
+array2=np.array([[0,1,2,3,4],[0,1,2,3,4],[0,1,2,3,4],[0,1,2,3,4],[0,1,2,3,4]])
+print (array2)
+middle_column=array2[:,2] # This will give me the middle column
+print(middle_column)
+middle_row=array2[2,:]
+print(middle_row)
+print(np.shape(array2))
+array2Units = array2 * u.l
+print (array2Units)
 
 5.  One of the most famous equations for a particle diffusing through a liquid at low Reynolds Number is the Stokes-Einstein Equation where k<sub>B</sub> is the Boltzmann constant, T is the temperature in Kelvin, eta is the dynamic viscosity in kg/(m*s), and r is the particle radius. Write a function that takes a temperature in Kelvin, a particle radius in meters, and a viscosity of water to calculate the diffusion coefficient D.
 
@@ -84,6 +96,11 @@ from scipy.constants import Boltzmann as kB_sc # I've imported the unitless valu
 kB = kB_sc * u.joule / u.kelvin # I've given kB units for you in J/K; you can use the kB variable to give you Boltzmann's constant with units
 
 # Write your code here
+
+temp=int(input("Enter a temperature (in kelvin): "))
+radius=int(input("Enter particle radius (in meters): "))
+viscosity=int(input("Enter a viscosity: "))
+
 
 ```
 
