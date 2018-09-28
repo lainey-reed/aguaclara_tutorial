@@ -134,16 +134,16 @@ from aide_design.play import*
 
 def reynoldsNumber(v,r,nu):
   return (2*v*r / nu)
-  
-temp_array=np.arange(273,473)
+
+temp_array=np.arange(201)
 pipeRadius=.2*u.m
 flowRate=4*u.m ** 2 /u.s
 viscosity_k_array = np.array([])
 for n in temp_array:
-  viscosity_k=pc.viscosity_kinematic(n*u.kelvin)
+  viscosity_k=pc.viscosity_kinematic((n+273)*u.kelvin)
   viscosity_k_array = np.append(viscosity_k_array, viscosity_k)
 
-plt.plot(temp_array,reynoldsNumber(flowRate,pipeRadius,viscosity_k_array),'-',label = "Reynolds Number")
+plt.plot(temp_array+273,reynoldsNumber(flowRate,pipeRadius,viscosity_k_array),'-',label = "Reynolds Number")
 plt.xlabel('Temperature (Kelvin)')
 plt.ylabel('Reynolds Number')
 plt.title('Temperature vs. Reynolds Number')
